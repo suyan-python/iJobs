@@ -7,65 +7,100 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
-    <div>
-      <div className="flex items-center justify-center max-w-7xl mx-auto">
-        <form
-          action=""
-          className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
-        >
-          <h1 className="font-bold text-xl mb-5">Sign-Up</h1>
-          <div className="my-2">
-            <Label>Full Name</Label>
-            <Input type="text"></Input>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md mx-auto bg-white bg-opacity-10 shadow-xl rounded-lg p-8 backdrop-filter backdrop-blur-lg">
+        <h1 className="font-bold text-2xl text-center mb-6 text-white">
+          Create Your Account
+        </h1>
+        <form className="space-y-6">
+          <div>
+            <Label className="block text-gray-300">Full Name</Label>
+            <Input
+              type="text"
+              className="w-full p-3 border border-transparent bg-white bg-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-white placeholder-gray-300"
+              placeholder="Enter your full name"
+            />
           </div>
-          <div className="my-2">
-            <Label>Email</Label>
-            <Input type="email"></Input>
+          <div>
+            <Label className="block text-gray-300">Email</Label>
+            <Input
+              type="email"
+              className="w-full p-3 border border-transparent bg-white bg-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-white placeholder-gray-300"
+              placeholder="Enter your email"
+            />
           </div>
-          <div className="my-2">
-            <Label>Phone Number</Label>
-            <Input type="number"></Input>
+          <div>
+            <Label className="block text-gray-300">Phone Number</Label>
+            <Input
+              type="number"
+              className="w-full p-3 border border-transparent bg-white bg-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-white placeholder-gray-300"
+              placeholder="Enter your phone number"
+            />
           </div>
-          <div className="my-2">
-            <Label>Password</Label>
-            <Input type="password"></Input>
+          <div>
+            <Label className="block text-gray-300">Password</Label>
+            <Input
+              type="password"
+              className="w-full p-3 border border-transparent bg-white bg-opacity-20 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-white placeholder-gray-300"
+              placeholder="Enter your password"
+            />
           </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroup className="flex items-center gap-4 my-5">
-              <div className="flex items-center space-x-2">
+
+          <div className="my-4">
+            <Label className="block text-gray-300">Role</Label>
+            <RadioGroup className="flex space-x-4 mt-2">
+              <div className="flex items-center">
                 <Input
                   type="radio"
                   name="role"
                   value="student"
                   className="cursor-pointer"
                 />
-                <Label htmlFor="r1">Student</Label>
+                <Label className="ml-2 text-gray-300">Student</Label>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center">
                 <Input
                   type="radio"
                   name="role"
                   value="recruiter"
                   className="cursor-pointer"
                 />
-                <Label htmlFor="r2">Recruiter</Label>
+                <Label className="ml-2 text-gray-300">Recruiter</Label>
               </div>
             </RadioGroup>
-            <div className="flex items-center gap-2">
-              <Label>Profile</Label>
-              <Input accept="image/*" type="file" className="cursor-pointer" />
+          </div>
+
+          <div className="mt-4">
+            <Label className="block text-gray-300 mb-2">Profile Picture</Label>
+            <div className="flex items-center">
+              <Input
+                type="file"
+                accept="image/*"
+                id="profilePicture"
+                className="hidden"
+              />
+              <label
+                htmlFor="profilePicture"
+                className="flex items-center justify-center w-full p-3 border border-transparent bg-white bg-opacity-20 rounded-md cursor-pointer transition-all duration-200 hover:bg-white hover:bg-opacity-30 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                <span className="text-gray-300">Upload a picture</span>
+              </label>
             </div>
           </div>
-          <Button type="submit" className="w-full my-4">
-            SignUp
+
+          <Button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
+          >
+            Sign Up
           </Button>
-          <span className="text-gray-500">
-            Already have an account?{" "}
-            <Link to={"/login"} className="text-blue-400">
-              Login
-            </Link>{" "}
-          </span>
         </form>
+        <p className="text-center text-gray-300 mt-4">
+          Already have an account?{" "}
+          <Link to="/login" className="text-blue-400 hover:text-blue-500">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

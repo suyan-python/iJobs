@@ -3,7 +3,16 @@ export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backdropBlur: {
+        md: "10px",
+      },
+    },
   },
-  plugins: [require("tailwindcss-animate")],
+  variants: {
+    extend: {
+      backdropFilter: ["responsive", "hover", "focus"],
+    },
+  },
+  plugins: [require("tailwindcss-animate"), require("tailwindcss-filters")],
 };
