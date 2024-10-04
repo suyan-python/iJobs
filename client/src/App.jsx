@@ -1,11 +1,18 @@
-import { useState } from "react";
-import { Button } from "./components/ui/button";
+import Login from "./components/auth/Login";
+import SignUp from "./components/auth/SignUp";
+import NavBar from "./components/shared/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <h1 className="text-red-400">iJobs</h1>
-      <Button />
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </Router>
     </>
   );
 }
