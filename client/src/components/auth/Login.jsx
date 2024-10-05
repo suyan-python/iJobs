@@ -8,6 +8,9 @@ import { USER_API_END_POINT } from "@/utils/constant";
 import login from "../../assets/pictures/login.svg";
 import { toast } from "sonner";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "@/redux/authSlice";
+import { Loader2 } from "lucide-react";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -15,7 +18,9 @@ const Login = () => {
     password: "",
     role: "",
   });
+  const { loading } = useSelector((store) => store.auth);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -24,6 +29,7 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      dispatch(setLoading(true));
       const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
         headers: {
           "Content-Type": "application/json",
@@ -36,6 +42,8 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -51,7 +59,7 @@ const Login = () => {
       </div>
 
       {/* Form Section */}
-      <div className="w-full max-w-md lg:w-1/2 mx-auto bg-white bg-opacity-10 shadow-xl rounded-lg p-8 backdrop-filter backdrop-blur-lg transition duration-300 ease-in-out transform hover:scale-105">
+      <div className="w-full max-w-md lg:w-1/2 mx-auto bg-white bg-opacity-10 shadow-xl rounded-lg p-8 backdrop-filter backdrop-blur-lg transition duration-300 ease-in-out transform">
         <h1 className="font-bold text-2xl lg:text-3xl text-center mb-6 text-white">
           Login to Your Account
         </h1>
@@ -113,12 +121,20 @@ const Login = () => {
           </div>
 
           {/* Submit Button */}
-          <Button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
-          >
-            Login
-          </Button>
+          {loading ? (
+            <Button className="w-full my-4">
+              {" "}
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Wait{" "}
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
+            >
+              Login
+            </Button>
+          )}
         </form>
 
         {/* Sign Up Link */}

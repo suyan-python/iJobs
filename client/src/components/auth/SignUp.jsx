@@ -8,6 +8,9 @@ import signup from "../../assets/pictures/signup.svg";
 import { USER_API_END_POINT } from "@/utils/constant";
 import { toast } from "sonner";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "@/redux/authSlice";
+import { Loader2 } from "lucide-react";
 
 const SignUp = () => {
   const [input, setInput] = useState({
@@ -18,7 +21,9 @@ const SignUp = () => {
     role: "",
     file: "",
   });
+  const { loading } = useSelector((store) => store.auth);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -36,6 +41,7 @@ const SignUp = () => {
     formData.append("phoneNumber", input.phoneNumber);
     formData.append("password", input.password);
     formData.append("role", input.role);
+    dispatch(setLoading(true));
     if (input.file) {
       formData.append("file", input.file);
     }
@@ -51,8 +57,10 @@ const SignUp = () => {
         toast.success(res.data.message);
       }
     } catch (error) {
-      console.log("Error from Axios");
+      console.log("Error from Signup Axios");
       toast.error(error.response.data.message);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -68,7 +76,7 @@ const SignUp = () => {
       </div>
 
       {/* Form Section */}
-      <div className="w-full max-w-md lg:w-1/2 mx-auto bg-white bg-opacity-10 shadow-xl rounded-lg p-8 backdrop-filter backdrop-blur-lg transition duration-300 ease-in-out transform hover:scale-105">
+      <div className="w-full max-w-md lg:w-1/2 mx-auto bg-white bg-opacity-10 shadow-xl rounded-lg p-8 backdrop-filter backdrop-blur-lg transition duration-300 ease-in-out transform">
         <h1 className="font-bold text-2xl lg:text-3xl text-center mb-6 text-white">
           Create Your Account
         </h1>
@@ -176,12 +184,20 @@ const SignUp = () => {
           </div>
 
           {/* Submit Button */}
-          <Button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
-          >
-            Sign Up
-          </Button>
+          {loading ? (
+            <Button className="w-full my-4">
+              {" "}
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Wait{" "}
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
+            >
+              SignUp
+            </Button>
+          )}
         </form>
 
         {/* Login Link */}
