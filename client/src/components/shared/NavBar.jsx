@@ -20,13 +20,13 @@ const NavBar = () => {
       {/* Added backdrop-blur-md for blur effect */}
       <div className="flex items-center justify-between mx-auto max-w-7xl px-4 py-4">
         {/* Logo */}
-        <div>
-          <h1 className="text-2xl font-bold text-white">
-            <Link to={"/"}>
-              i<span className="text-[#F83002]">Jobs</span>
-            </Link>
-          </h1>
-        </div>
+        <Link to={"/"}>
+          <div>
+            <h1 className="text-2xl font-bold text-white">
+              i<span className="text-blue-400">Jobs</span>
+            </h1>
+          </div>
+        </Link>
         {/* Mobile Menu Toggle */}
         <div className="lg:hidden">
           <Button
@@ -69,15 +69,19 @@ const NavBar = () => {
           {/* Authentication Buttons */}
           {!user ? (
             <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                className="text-white border-[#40A8F5] hover:border-[#2B81C7]"
-              >
-                <Link to="/login">Login</Link>
-              </Button>
-              <Button className="text-white bg-[#40A8F5] hover:bg-[#2B81C7] transition duration-150">
-                <Link to="/signup">SignUp</Link>
-              </Button>
+              <Link to="/login">
+                <Button
+                  variant="outline"
+                  className="text-white border-[#40A8F5] hover:border-[#2B81C7]"
+                >
+                  Login
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button className="text-white bg-[#40A8F5] hover:bg-[#2B81C7] transition duration-150">
+                  SignUp
+                </Button>
+              </Link>
             </div>
           ) : (
             <Popover>
@@ -126,7 +130,7 @@ const NavBar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden">
-          <ul className="flex flex-col items-center bg-gradient-to-br from-[#0D0F25] via-[#343746] to-[#1B1D36] gap-4 py-4">
+          <ul className="flex flex-col items-center shadow-md gap-4 py-4">
             <li>
               <Link
                 to="/"
