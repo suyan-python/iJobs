@@ -7,18 +7,20 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-300 py-10">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <img src={info} alt="" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Logo or Info */}
+          <div className="space-y-4 text-center lg:text-left">
+            <img src={info} alt="Info" className="mx-auto lg:mx-0" />
           </div>
+
           {/* Company Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 text-center lg:text-left">
             <h2 className="text-xl font-semibold text-white">iJobs</h2>
             <p className="text-gray-400">
               Connecting job seekers and recruiters with ease. Helping you find
               the perfect job or candidate.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex justify-center lg:justify-start space-x-4">
               <a
                 href="https://facebook.com"
                 target="_blank"
@@ -51,7 +53,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="space-y-4">
+          <div className="space-y-4 text-center lg:text-left">
             <h2 className="text-xl font-semibold text-white">Quick Links</h2>
             <ul className="space-y-2">
               <li>
@@ -90,7 +92,7 @@ const Footer = () => {
           </div>
 
           {/* Resources */}
-          <div className="space-y-4">
+          <div className="space-y-4 text-center lg:text-left">
             <h2 className="text-xl font-semibold text-white">Resources</h2>
             <ul className="space-y-2">
               <li>
@@ -141,5 +143,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// bg-gradient-to-br from-gray-800 via-gray-900 to-black

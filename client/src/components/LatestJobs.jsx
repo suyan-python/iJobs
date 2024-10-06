@@ -5,7 +5,7 @@ const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const LatestJobs = () => {
   return (
-    <div>
+    <div className="mt-28">
       <h1 className="text-4xl font-bold ">
         {" "}
         <span className="text-blue-400">Latest & Top </span> Jobs Openings
