@@ -5,9 +5,10 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { LogOut, User2 } from "lucide-react";
 import { Menu, X } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
-  const user = false; // Adjust this state to reflect if a user is logged in or not
+  const { user } = useSelector((store) => store.auth);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -112,7 +113,7 @@ const NavBar = () => {
                   <div className="flex items-center">
                     <User2 className="text-white" />
                     <Button variant="link" className="text-[#40A8F5]">
-                      View Profile
+                      <Link to={"/profile"}>View Profile</Link>
                     </Button>
                   </div>
                   <div className="flex items-center">
@@ -198,7 +199,7 @@ const NavBar = () => {
                     <div className="flex items-center">
                       <User2 className="text-white" />
                       <Button variant="link" className="text-[#40A8F5]">
-                        View Profile
+                        <Link to={"/profile"}>View Profile</Link>
                       </Button>
                     </div>
                     <div className="flex items-center">
