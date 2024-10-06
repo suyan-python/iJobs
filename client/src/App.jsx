@@ -1,5 +1,6 @@
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
+import Browser from "./components/browser/Browse";
 import Jobs from "./components/jobs/Jobs";
 import LandingPage from "./components/Landing";
 import Footer from "./components/shared/Footer";
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/browse" element={<Browser />} />
         </Routes>
         <Footer />
       </Router>
