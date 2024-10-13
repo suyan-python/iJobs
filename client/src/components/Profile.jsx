@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { Contact, Mail, Pen } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Label } from "./ui/label";
 import AppliedJobTable from "./AppliedJobTable";
+import UpdateProfileDialog from "./UpdateProfileDialog";
 
 const skills = ["HTML", "CSS", "JavaScript", "ReactJS"];
+const isResume = true;
 
 const Profile = () => {
-  const isResume = true;
+  const [open, setOpen] = useState(false);
   return (
-    <div className="py-20 px-4 md:px-10 bg-gradient-to-br from-gray-900 via-blue-950 to-black">
+    <div className="py-36 px-4 md:px-10 bg-gradient-to-br from-gray-900 via-blue-950 to-black">
       <div className="max-w-4xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-lg p-8">
         {/* Profile Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0">
@@ -27,7 +29,11 @@ const Profile = () => {
               </p>
             </div>
           </div>
-          <Button variant="outline" className="flex items-center gap-2">
+          <Button
+            onClick={() => setOpen(true)}
+            variant="outline"
+            className="flex items-center gap-2"
+          >
             <Pen /> Edit Profile
           </Button>
         </div>
@@ -88,6 +94,7 @@ const Profile = () => {
         <h2 className="font-semibold text-xl mb-4">Applied Jobs</h2>
         <AppliedJobTable />
       </div>
+      <UpdateProfileDialog open={open} setOpen={setOpen} />
     </div>
   );
 };
