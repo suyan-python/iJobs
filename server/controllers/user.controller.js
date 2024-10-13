@@ -113,11 +113,6 @@ export const updateProfile = async (req, res) => {
   try {
     const { fullName, email, phoneNumber, bio, skills } = req.body;
     const file = req.file;
-    // if (!(fullName || email || phoneNumber || bio || skills)) {
-    //   return res
-    //     .status(400)
-    //     .json({ message: "Please fill all the fields", success: false });
-    // }
 
     //cloudinary  upload
 
@@ -137,10 +132,10 @@ export const updateProfile = async (req, res) => {
 
     //updating the  data
     if (fullName) user.fullName = fullName;
-    // if (email) user.email = email;
-    // if (phoneNumber) user.phoneNumber = phoneNumber;
-    // if (bio) user.profile.bio = bio;
-    // if (skills) user.profile.skills = skillsArray;
+    if (email) user.email = email;
+    if (phoneNumber) user.phoneNumber = phoneNumber;
+    if (bio) user.profile.bio = bio;
+    if (skills) user.profile.skills = skillsArray;
 
     await user.save();
 
