@@ -26,21 +26,24 @@ const filterData = [
 
 const FilterCard = () => {
   return (
-    <div className="font-normal w-full bg-white p-3 rounded-md">
-      <h1 className="font-bold text-2xl">Filter Jobs</h1>
-      <hr className="mt-3" />
+    <div className="font-normal w-full max-w-sm md:max-w-md lg:max-w-lg bg-white p-5 rounded-md shadow-md">
+      <h1 className="font-bold text-2xl text-gray-800">Filter Jobs</h1>
+      <hr className="mt-3 mb-6 border-gray-300" />
       <RadioGroup>
         {filterData.map((data, index) => (
-          <div>
-            <h1 className="font-bold text-lg">{data.filterType}</h1>
-            {data.array.map((item, index) => {
-              return (
-                <div className="flex items-center space-x-2 my-2">
-                  <RadioGroupItem value={item} />
-                  <Label>{item}</Label>
-                </div>
-              );
-            })}
+          <div key={index} className="mb-5">
+            <h1 className="font-semibold text-lg text-gray-700 mb-3">
+              {data.filterType}
+            </h1>
+            {data.array.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center space-x-3 my-2 hover:bg-gray-100 rounded-md p-2"
+              >
+                <RadioGroupItem value={item} />
+                <Label className="cursor-pointer text-gray-700">{item}</Label>
+              </div>
+            ))}
           </div>
         ))}
       </RadioGroup>
