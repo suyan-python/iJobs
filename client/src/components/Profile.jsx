@@ -75,11 +75,11 @@ const Profile = () => {
             <Label className="text-base font-bold">Download Resume</Label>
             {isResume ? (
               <a
-                href="https://youtube.com"
+                href={user?.profile?.resume}
                 target="blank"
                 className="text-blue-500 hover:underline"
               >
-                View File
+                {user?.profile?.resumeOriginalName}
               </a>
             ) : (
               <span>NA</span>
