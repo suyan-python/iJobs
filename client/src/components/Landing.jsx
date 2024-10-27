@@ -1,9 +1,10 @@
 import React from "react";
 import "./animation.css";
 import Hero1Section from "./Hero1Section";
-import Hero2Section from "./Hero2Section";
+import useGetAllJobs from "@/hooks/useGetAllJobs";
 
 const LandingPage = () => {
+  useGetAllJobs();
   return (
     <>
       <Hero1Section />

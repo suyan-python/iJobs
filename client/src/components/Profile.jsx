@@ -21,7 +21,7 @@ const Profile = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0">
           <div className="flex items-center gap-4">
             <Avatar className="h-24 w-24">
-              <AvatarImage src="https://bcassetcdn.com/public/blog/wp-content/uploads/2022/10/05203736/letter-k-company-by-eightylogos-brandcrowd.png" />
+              <AvatarImage src={user?.profile?.profilePhoto} />
             </Avatar>
             <div>
               <h1 className="font-semibold text-2xl">{user?.fullName}</h1>

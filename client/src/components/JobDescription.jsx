@@ -1,24 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { JOB_API_END_POINT } from "@/utils/constant";
+import { setSingleJob } from "@/redux/jobSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const JobDescription = () => {
-  const isApplied = false;
+  const isApplied = true;
+  const params = useParams();
+  const jobId = params.id;
+  const { singleJob } = useSelector((store) => store.job);
+  const { user } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchSingleJob = async () => {
+      try {
+        const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}`, {
+          withCredentials: true,
+        });
+        if (res.data.success) {
+          dispatch(setSingleJob(res.data.job));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchSingleJob();
+  }, [jobId, dispatch, user?._id]);
 
   return (
     <div className="max-w-7xl mx-auto my-32 p-6 rounded-lg shadow-lg">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <h1 className="font-bold text-2xl ">Frontend Developer</h1>
+          <h1 className="font-bold text-2xl ">{singleJob?.title}</h1>
           <div className="flex flex-wrap items-center gap-3 mt-4">
             <Badge className="text-green-600 font-medium bg-green-100 px-3 py-1 rounded-full">
-              12 Positions
+              {singleJob?.position} Positions
             </Badge>
             <Badge className="text-red-600 font-medium bg-red-100 px-3 py-1 rounded-full">
-              Part Time
+              {singleJob?.jobType}
             </Badge>
             <Badge className="text-blue-600 font-medium bg-blue-100 px-3 py-1 rounded-full">
-              24 LPA
+              {singleJob?.salary} LPA
             </Badge>
           </div>
         </div>
@@ -41,33 +67,44 @@ const JobDescription = () => {
         <h1 className="font-bold my-1">
           Role:{" "}
           <span className="pl-4 font-normal text-gray-400">
-            Frontend Developer
+            {singleJob?.title}
           </span>
         </h1>
         <h1 className="font-bold my-1">
-          Location:{" "}
-          <span className="pl-4 font-normal text-gray-400">Lalitpur</span>
+          Location:
+          <span className="pl-4 font-normal text-gray-400">
+            {singleJob?.location}{" "}
+          </span>
         </h1>
         <h1 className="font-bold my-1">
-          Description:{" "}
+          Description:
           <span className="pl-4 font-normal text-gray-400">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            {singleJob?.description}
           </span>
         </h1>
         <h1 className="font-bold my-1">
           Experience:{" "}
-          <span className="pl-4 font-normal text-gray-400">2 years</span>
+          <span className="pl-4 font-normal text-gray-400">
+            {singleJob?.experience}{" "}
+          </span>
         </h1>
         <h1 className="font-bold my-1">
-          Salary: <span className="pl-4 font-normal text-gray-400">12 LPA</span>
+          Salary:{" "}
+          <span className="pl-4 font-normal text-gray-400">
+            {singleJob?.salary} LPA
+          </span>
         </h1>
         <h1 className="font-bold my-1">
           Total Applicants:{" "}
-          <span className="pl-4 font-normal text-gray-400">4</span>
+          <span className="pl-4 font-normal text-gray-400">
+            {singleJob?.applications?.length}{" "}
+          </span>
         </h1>
         <h1 className="font-bold my-1">
           Posted Date:{" "}
-          <span className="pl-4 font-normal text-gray-400">10/13/2024</span>
+          <span className="pl-4 font-normal text-gray-400">
+            {singleJob?.createdAt.split("T")[0]}{" "}
+          </span>
         </h1>
       </div>
     </div>

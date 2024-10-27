@@ -1,5 +1,6 @@
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
+import BehindTheBusiness from "./components/behind/BehindTheBusiness";
 import Browser from "./components/browser/Browse";
 import JobDescription from "./components/JobDescription";
 import Jobs from "./components/jobs/Jobs";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/description/:id" element={<JobDescription />} />
           <Route path="/browse" element={<Browser />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/behind" element={<BehindTheBusiness />} />
         </Routes>
         <Footer />
       </Router>

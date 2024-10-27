@@ -118,7 +118,7 @@ const NavBar = () => {
               <PopoverTrigger asChild>
                 <Avatar className="cursor-pointer">
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
+                    src={user?.profile?.profilePhoto}
                     alt="User Avatar"
                   />
                 </Avatar>
@@ -127,14 +127,14 @@ const NavBar = () => {
                 <div className="flex gap-4 items-center">
                   <Avatar>
                     <AvatarImage
-                      src="https://github.com/shadcn.png"
+                      src={user?.profile?.profilePhoto}
                       alt="User Avatar"
                     />
                   </Avatar>
                   <div>
-                    <h4 className="font-medium text-white">Suyan Man Amatya</h4>
+                    <h4 className="font-medium text-white">{user?.fullName}</h4>
                     <p className="text-sm text-gray-300">
-                      Lorem ipsum dolor sit amet.
+                      {user?.profile?.bio}
                     </p>
                   </div>
                 </div>
