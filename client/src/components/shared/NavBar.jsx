@@ -64,36 +64,63 @@ const NavBar = () => {
         {/* Links for larger screens */}
         <div className="hidden lg:flex items-center gap-8">
           <ul className="flex items-center gap-8">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? activeClassName : inactiveClassName
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/jobs"
-                className={({ isActive }) =>
-                  isActive ? activeClassName : inactiveClassName
-                }
-              >
-                Jobs
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/browse"
-                className={({ isActive }) =>
-                  isActive ? activeClassName : inactiveClassName
-                }
-              >
-                Browse
-              </NavLink>
-            </li>
+            {user && user.role === "recruiter" ? (
+              <>
+                <li>
+                  <NavLink
+                    to="/admin/companies"
+                    className={({ isActive }) =>
+                      isActive ? activeClassName : inactiveClassName
+                    }
+                  >
+                    Companies
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/admin/jobs"
+                    className={({ isActive }) =>
+                      isActive ? activeClassName : inactiveClassName
+                    }
+                  >
+                    Jobs
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive ? activeClassName : inactiveClassName
+                    }
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/jobs"
+                    className={({ isActive }) =>
+                      isActive ? activeClassName : inactiveClassName
+                    }
+                  >
+                    Jobs
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/browse"
+                    className={({ isActive }) =>
+                      isActive ? activeClassName : inactiveClassName
+                    }
+                  >
+                    Browse
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
 
           {/* Authentication Buttons */}
@@ -114,50 +141,56 @@ const NavBar = () => {
               </NavLink>
             </div>
           ) : (
-            <Popover>
-              <PopoverTrigger asChild>
-                <Avatar className="cursor-pointer">
-                  <AvatarImage
-                    src={user?.profile?.profilePhoto}
-                    alt="User Avatar"
-                  />
-                </Avatar>
-              </PopoverTrigger>
-              <PopoverContent className="w-80 my-4">
-                <div className="flex gap-4 items-center">
-                  <Avatar>
+            <div>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Avatar className="cursor-pointer">
                     <AvatarImage
                       src={user?.profile?.profilePhoto}
                       alt="User Avatar"
                     />
                   </Avatar>
-                  <div>
-                    <h4 className="font-medium text-white">{user?.fullName}</h4>
-                    <p className="text-sm text-gray-300">
-                      {user?.profile?.bio}
-                    </p>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 my-4 bg-black bg-opacity-40 backdrop-blur-sm">
+                  <div className="flex gap-4 items-center">
+                    <Avatar>
+                      <AvatarImage
+                        src={user?.profile?.profilePhoto}
+                        alt="User Avatar"
+                      />
+                    </Avatar>
+                    <div>
+                      <h4 className="font-medium text-white">
+                        {user?.fullName}
+                      </h4>
+                      <p className="text-sm text-gray-300">
+                        {user?.profile?.bio}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex flex-col gap-3 text-gray-300 items-start my-3">
-                  <div className="flex items-center">
-                    <User2 className="text-white" />
-                    <Button variant="link" className="text-[#40A8F5]">
-                      <NavLink to={"/profile"}>View Profile</NavLink>
-                    </Button>
+                  <div className="flex flex-col gap-3 text-gray-300 items-start my-3">
+                    {user && user.role === "student" && (
+                      <div className="flex items-center">
+                        <User2 className="text-white" />
+                        <Button variant="link" className="text-[#40A8F5]">
+                          <NavLink to={"/profile"}>View Profile</NavLink>
+                        </Button>
+                      </div>
+                    )}
+                    <div className="flex items-center">
+                      <LogOut className="text-white" />
+                      <Button
+                        onClick={logoutHandler}
+                        variant="link"
+                        className="text-[#40A8F5]"
+                      >
+                        Logout
+                      </Button>
+                    </div>
                   </div>
-                  <div className="flex items-center">
-                    <LogOut className="text-white" />
-                    <Button
-                      onClick={logoutHandler}
-                      variant="link"
-                      className="text-[#40A8F5]"
-                    >
-                      Logout
-                    </Button>
-                  </div>
-                </div>
-              </PopoverContent>
-            </Popover>
+                </PopoverContent>
+              </Popover>
+            </div>
           )}
         </div>
       </div>

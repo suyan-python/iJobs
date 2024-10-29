@@ -1,3 +1,5 @@
+import Companies from "./components/admin/Companies";
+import CompanyCreate from "./components/admin/CompanyCreate";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import BehindTheBusiness from "./components/behind/BehindTheBusiness";
@@ -24,6 +26,10 @@ function App() {
           <Route path="/browse" element={<Browser />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/behind" element={<BehindTheBusiness />} />
+
+          {/* route for admin  */}
+          <Route path="/admin/companies" element={<Companies />} />
+          <Route path="/admin/companies/create" element={<CompanyCreate />} />
         </Routes>
         <Footer />
       </Router>
