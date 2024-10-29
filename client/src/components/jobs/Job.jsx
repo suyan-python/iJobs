@@ -21,13 +21,10 @@ const Job = ({ job }) => {
       <div className="flex-shrink-0 min-w-full sm:min-w-0 sm:w-auto">
         <div className="flex items-center justify-between mb-4">
           <p className="text-xs text-gray-500">
-            {daysAgoFunction(
-              job?.createdAt === 0
-                ? "Today"
-                : `${daysAgoFunction(job?.createdAt)} days ago`
-            )}
+            {daysAgoFunction(job?.createdAt) === 0
+              ? "Today"
+              : `${daysAgoFunction(job?.createdAt)} days ago`}
           </p>
-          <span>{daysAgoFunction(job?.createdAt)}</span>
           <Button
             variant="outline"
             className="rounded-full hover:bg-gray-100"
