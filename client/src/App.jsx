@@ -1,5 +1,6 @@
 import Companies from "./components/admin/Companies";
 import CompanyCreate from "./components/admin/CompanyCreate";
+import CompanySetup from "./components/admin/CompanySetup";
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import BehindTheBusiness from "./components/behind/BehindTheBusiness";
@@ -30,6 +31,7 @@ function App() {
           {/* route for admin  */}
           <Route path="/admin/companies" element={<Companies />} />
           <Route path="/admin/companies/create" element={<CompanyCreate />} />
+          <Route path="/admin/companies/:id" element={<CompanySetup />} />
         </Routes>
         <Footer />
       </Router>
