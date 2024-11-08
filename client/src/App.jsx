@@ -13,6 +13,8 @@ import Profile from "./components/Profile";
 import Footer from "./components/shared/Footer";
 import NavBar from "./components/shared/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AdminPostJobs from "./components/admin/AdminPostJobs";
+import Applicants from "./components/admin/Applicants";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
           <Route path="/admin/companies/create" element={<CompanyCreate />} />
           <Route path="/admin/companies/:id" element={<CompanySetup />} />
           <Route path="/admin/jobs" element={<AdminJobs />} />
+          <Route path="/admin/jobs/create" element={<AdminPostJobs />} />
+          <Route path="/admin/jobs/:id/applicants" element={<Applicants />} />
         </Routes>
         <Footer />
       </Router>
