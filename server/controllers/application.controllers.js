@@ -73,7 +73,7 @@ export const getAppliedJobs = async (req, res) => {
       success: true,
     });
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };
 
