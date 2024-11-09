@@ -28,7 +28,10 @@ const HeroSection = () => {
           </div>
           <div className="text-center lg:text-left mb-12 pt-20">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4">
-              Discover Your <span className="text-blue-400">Dream Jobs</span>
+              Discover Your{" "}
+              <span className="text-blue-400 animated-gradient-text ">
+                Dream Jobs
+              </span>
             </h1>
             <p className="text-base md:text-lg lg:text-xl mb-8 max-w-xl mx-auto lg:mx-0">
               Find the perfect job that fits your skills and interests. Join our
