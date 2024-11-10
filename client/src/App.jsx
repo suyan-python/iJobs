@@ -15,6 +15,7 @@ import NavBar from "./components/shared/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminPostJobs from "./components/admin/AdminPostJobs";
 import Applicants from "./components/admin/Applicants";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
 
 function App() {
   return (
@@ -32,7 +33,14 @@ function App() {
           <Route path="/behind" element={<BehindTheBusiness />} />
 
           {/* route for admin  */}
-          <Route path="/admin/companies" element={<Companies />} />
+          <Route
+            path="/admin/companies"
+            element={
+              <ProtectedRoute>
+                <Companies />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/admin/companies/create" element={<CompanyCreate />} />
           <Route path="/admin/companies/:id" element={<CompanySetup />} />
           <Route path="/admin/jobs" element={<AdminJobs />} />
