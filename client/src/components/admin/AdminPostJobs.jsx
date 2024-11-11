@@ -70,7 +70,7 @@ const AdminPostJobs = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className=" min-h-screen mt-36">
       <NavBar />
       <form onSubmit={submitHandler}>
         <div className="flex flex-col items-center justify-center w-full py-10">

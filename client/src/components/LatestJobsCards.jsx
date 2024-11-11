@@ -7,7 +7,7 @@ const LatestJobsCards = ({ job }) => {
   return (
     <div
       onClick={() => navigate(`/description/${job._id}`)}
-      className="shadow-lg cursor-pointer p-4 sm:p-6 rounded-lg bg-white hover:shadow-2xl transition-shadow duration-300 ease-in-out max-w-full sm:max-w-lg mx-auto"
+      className="shadow-lg cursor-pointer p-4 sm:p-6 rounded-lg bg-white hover:shadow-2xl transition-shadow duration-300 ease-in-out w-4/5 sm:max-w-lg  mx-auto"
     >
       <div className="mb-3 sm:mb-4">
         <h1 className="font-semibold text-lg sm:text-xl text-gray-800">

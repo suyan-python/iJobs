@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 
 const Hero3Section = () => {
   return (
-    <div className="mt-12 text-center shadow-md p-8 md:p-10 backdrop-blur-sm rounded-md w-full max-w-lg mx-auto">
-      <h3 className="text-2xl sm:text-3xl font-semibold mb-4">
-        Join Us Today!
-      </h3>
-      <p className="text-sm sm:text-lg mb-6 max-w-lg mx-auto">
+    <div className=" text-center p-8 md:p-10 rounded-md w-full  mx-auto">
+      <h3 className="lg:text-6xl text-4xl font-bold mb-4">Join Us Today!</h3>
+      <p className="lg:text-lg text-2xl mb-6 max-w-lg mx-auto">
         Create an account and start your journey towards your dream job.
       </p>
       <Link to="/signup">

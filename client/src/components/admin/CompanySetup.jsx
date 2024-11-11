@@ -68,6 +68,7 @@ const CompanySetup = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     setInput({
       name: singleCompany.name || "",
@@ -77,23 +78,26 @@ const CompanySetup = () => {
       file: singleCompany.file || null,
     });
   }, [singleCompany]);
+
   return (
-    <div>
+    <div className="mt-36 min-h-screen bg-gray-50">
       <NavBar />
-      <div className="max-w-xl mx-auto my-28">
-        <form onSubmit={submitHandler}>
-          <div className="flex items-center gap-5 p-8">
+      <div className="max-w-2xl mx-auto px-4 my-10">
+        <form
+          onSubmit={submitHandler}
+          className="bg-white p-6 shadow-lg rounded-lg"
+        >
+          <div className="flex items-center gap-5 mb-6">
             <Button
               onClick={() => navigate("/admin/companies")}
-              className="flex items-center gap-2 text-gray-500 font-semibold"
+              className="flex items-center gap-2 text-gray-500 font-semibold hover:text-gray-700"
             >
               <ArrowLeft />
               <span>Back</span>
             </Button>
-            <div>{<h1>{input.name} </h1>}</div>
-            <h1 className="font-bold text-xl">Company Setup</h1>
+            <h1 className="font-bold text-xl text-gray-800">Company Setup</h1>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
               <Label>Company Name</Label>
               <Input
@@ -101,6 +105,8 @@ const CompanySetup = () => {
                 name="name"
                 value={input.name}
                 onChange={changeEventHandler}
+                placeholder="Enter company name"
+                className="mt-1"
               />
             </div>
             <div>
@@ -110,6 +116,8 @@ const CompanySetup = () => {
                 name="description"
                 value={input.description}
                 onChange={changeEventHandler}
+                placeholder="Enter company description"
+                className="mt-1"
               />
             </div>
             <div>
@@ -119,6 +127,8 @@ const CompanySetup = () => {
                 name="website"
                 value={input.website}
                 onChange={changeEventHandler}
+                placeholder="Enter company website"
+                className="mt-1"
               />
             </div>
             <div>
@@ -128,30 +138,35 @@ const CompanySetup = () => {
                 name="location"
                 value={input.location}
                 onChange={changeEventHandler}
+                placeholder="Enter company location"
+                className="mt-1"
               />
             </div>
-            <div>
+            <div className="md:col-span-2">
               <Label>Logo</Label>
               <Input
                 type="file"
                 accept="image/*"
                 onChange={changeFileHandler}
+                className="mt-1"
               />
             </div>
           </div>
-          {loading ? (
-            <Button className="w-full my-4">
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Wait
-            </Button>
-          ) : (
-            <Button
-              type="submit"
-              className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
-            >
-              Update
-            </Button>
-          )}
+          <div className="mt-6">
+            {loading ? (
+              <Button className="w-full my-4 bg-blue-600 text-white">
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Wait
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out transform hover:scale-105"
+              >
+                Update
+              </Button>
+            )}
+          </div>
         </form>
       </div>
     </div>

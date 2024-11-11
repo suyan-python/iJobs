@@ -16,17 +16,27 @@ const Browser = () => {
   }, []);
 
   return (
-    <div className="pt-32 bg-gradient-to-br from-gray-900 via-blue-950 to-black">
-      <div className="max-w-7xl mx-auto mt-5 pb-52">
-        <div>
-          <h1 className="text-white font-bold text-xl">
-            Search Results ({allJobs.length} )
+    <div className="pt-32 bg-gradient-to-br from-gray-900 via-blue-950 to-black min-h-screen">
+      <div className="max-w-7xl mx-auto mt-5 px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="text-center mb-8">
+          <h1 className="text-white font-extrabold text-2xl sm:text-3xl lg:text-4xl">
+            Search Results
+            <span className="text-blue-400"> ({allJobs.length})</span>
           </h1>
-          <div className="grid grid-cols-3 gap-4">
-            {allJobs.map((job) => {
-              return <Job key={job._id} job={job} />;
-            })}
-          </div>
+          <p className="text-gray-300 mt-2 text-sm sm:text-base lg:text-lg">
+            Browse through job listings that match your skills and interests.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {allJobs.map((job) => (
+            <div
+              className="transition-transform transform hover:scale-105"
+              key={job._id}
+            >
+              <Job job={job} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

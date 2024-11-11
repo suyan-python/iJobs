@@ -39,9 +39,17 @@ const ApplicantsTable = () => {
     }
   };
   return (
-    <div>
+    <div className="min-h-screen">
       <Table>
-        <TableCaption>A list of your recent applicants</TableCaption>
+        <TableCaption>
+          {!applicants?.applications?.length > 0 ? (
+            <span className="text-red-500 font-semibold">
+              *No applicants has applied yet
+            </span>
+          ) : (
+            <span className="font-semibold">*List of Applied Applicants</span>
+          )}
+        </TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Full Name</TableHead>

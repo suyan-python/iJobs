@@ -17,7 +17,7 @@ const Job = ({ job }) => {
   };
 
   return (
-    <div className="p-5 rounded-lg shadow-lg bg-white border border-gray-200 flex flex-row sm:flex-col overflow-x-auto max-w-full">
+    <div className="p-5 rounded-lg shadow-lg bg-white border border-gray-200 flex flex-row sm:flex-col overflow-x-auto max-w-full h-[35vh]">
       <div className="flex-shrink-0 min-w-full sm:min-w-0 sm:w-auto">
         <div className="flex items-center justify-between mb-4">
           <p className="text-xs text-gray-500">

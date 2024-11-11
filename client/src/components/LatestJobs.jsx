@@ -12,7 +12,7 @@ const LatestJobs = () => {
       <h1 className="text-4xl font-bold ">
         <span className="text-blue-400">Latest & Top </span> Jobs Openings
       </h1>
-      <div className="grid grid-cols-3 gap-4 my-5">
+      <div className="grid grid-cols-3 gap-4 my-5 sm:flex-col sm:gap-9">
         {allJobs.length <= 0 ? (
           <span>No Job Available</span>
         ) : (
