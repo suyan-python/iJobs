@@ -16,6 +16,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminPostJobs from "./components/admin/AdminPostJobs";
 import Applicants from "./components/admin/Applicants";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
+import AboutUs from "./components/aboutus/AboutUs";
+import Contact from "./components/contact/Contact";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/jobs" element={<Jobs />} />

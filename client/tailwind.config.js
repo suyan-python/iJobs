@@ -7,6 +7,9 @@ export default {
       backdropBlur: {
         md: "10px",
       },
+      backgroundImage: {
+        suyan: "url('/src/assets/team/suyan.png')",
+      },
     },
   },
   variants: {
