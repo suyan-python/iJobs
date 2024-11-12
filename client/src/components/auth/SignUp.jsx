@@ -58,7 +58,7 @@ const SignUp = () => {
       }
     } catch (error) {
       console.log("Error from Signup Axios");
-      toast.error(error.response.data.message);
+      toast.error(error.message);
     } finally {
       dispatch(setLoading(false));
     }
