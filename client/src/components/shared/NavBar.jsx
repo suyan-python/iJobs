@@ -46,10 +46,7 @@ const NavBar = () => {
       <div className="flex items-center justify-between mx-auto max-w-7xl px-4 py-4">
         {/* Logo */}
         <NavLink to={"/"}>
-          {/* <h1 className="text-2xl font-bold text-white">
-            i<span className="text-blue-400">Jobs</span>
-          </h1> */}
-          <div className="w-5">
+          <div className="w-1/4 p-1 rounded-lg bg-white">
             <img src={Logo} alt="" />
           </div>
         </NavLink>

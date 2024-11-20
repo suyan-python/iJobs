@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
-  origin: ["https://ijobs-1-vf05.onrender.com"],
+  origin: ["http://localhost:8000"],
   credentials: true,
 };
 
