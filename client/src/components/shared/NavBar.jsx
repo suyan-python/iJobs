@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { USER_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
 import { setUser } from "@/redux/authSlice";
+import Logo from "../../assets/logo/2.png";
 
 const NavBar = () => {
   const { user } = useSelector((store) => store.auth);
@@ -45,9 +46,12 @@ const NavBar = () => {
       <div className="flex items-center justify-between mx-auto max-w-7xl px-4 py-4">
         {/* Logo */}
         <NavLink to={"/"}>
-          <h1 className="text-2xl font-bold text-white">
+          {/* <h1 className="text-2xl font-bold text-white">
             i<span className="text-blue-400">Jobs</span>
-          </h1>
+          </h1> */}
+          <div className="w-5">
+            <img src={Logo} alt="" />
+          </div>
         </NavLink>
 
         {/* Mobile Menu Toggle */}

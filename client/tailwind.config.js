@@ -8,7 +8,7 @@ export default {
         md: "10px",
       },
       backgroundImage: {
-        suyan: "url('/src/assets/team/suyan.png')",
+        suyan: "url('/src/assets/team/suyan2.png')",
       },
     },
   },
