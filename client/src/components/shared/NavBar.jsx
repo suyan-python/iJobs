@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { USER_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
 import { setUser } from "@/redux/authSlice";
-import Logo from "../../assets/logo/2.png";
+import Logo from "../../assets/logo/ijobswhite.png";
 
 const NavBar = () => {
   const { user } = useSelector((store) => store.auth);
@@ -22,8 +22,10 @@ const NavBar = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const activeClassName = "text-[#40A8F5]"; // Class for active link
-  const inactiveClassName = "text-white hover:text-[#40A8F5] transition";
+  const activeClassName =
+    "text-[#40A8F5] animated-gradient-text font-semibold text-lg";
+  const inactiveClassName =
+    "text-white text-lg hover:text-[#40A8F5] transition-colors duration-200";
 
   const logoutHandler = async () => {
     try {
@@ -42,12 +44,12 @@ const NavBar = () => {
   };
 
   return (
-    <div className="bg-black bg-opacity-30 backdrop-blur-md shadow-md w-full fixed top-0 left-0 z-50">
-      <div className="flex items-center justify-between mx-auto max-w-7xl px-4 py-4">
+    <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black w-full fixed top-0 left-0 z-50">
+      <div className="flex items-center justify-between mx-auto max-w-7xl px-6 py-1">
         {/* Logo */}
         <NavLink to={"/"}>
-          <div className="w-1/4 p-1 rounded-lg bg-white">
-            <img src={Logo} alt="" />
+          <div className="w-1/12 p-1">
+            <img src={Logo} alt="Logo" className="object-contain" />
           </div>
         </NavLink>
 
@@ -58,7 +60,7 @@ const NavBar = () => {
             className="text-white focus:outline-none"
             onClick={toggleMobileMenu}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </Button>
         </div>
 
@@ -126,7 +128,7 @@ const NavBar = () => {
 
           {/* Authentication Buttons */}
           {!user ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
               <NavLink to="/login">
                 <Button
                   variant="outline"
@@ -149,22 +151,24 @@ const NavBar = () => {
                     <AvatarImage
                       src={user?.profile?.profilePhoto}
                       alt="User Avatar"
+                      className="w-10 h-10 rounded-full"
                     />
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="w-80 my-4 bg-black bg-opacity-40 backdrop-blur-sm">
+                <PopoverContent className="w-80 bg-purple-800 rounded-lg p-4">
                   <div className="flex gap-4 items-center">
                     <Avatar>
                       <AvatarImage
                         src={user?.profile?.profilePhoto}
                         alt="User Avatar"
+                        className="w-10 h-10 rounded-full"
                       />
                     </Avatar>
                     <div>
-                      <h4 className="font-medium text-white">
+                      <h4 className="font-bold text-white text-xl">
                         {user?.fullName}
                       </h4>
-                      <p className="text-sm text-gray-300">
+                      <p className="text-base text-gray-300">
                         {user?.profile?.bio}
                       </p>
                     </div>
@@ -173,7 +177,10 @@ const NavBar = () => {
                     {user && user.role === "student" && (
                       <div className="flex items-center">
                         <User2 className="text-white" />
-                        <Button variant="link" className="text-[#40A8F5]">
+                        <Button
+                          variant="link"
+                          className="text-[#40A8F5] text-lg"
+                        >
                           <NavLink to={"/profile"}>View Profile</NavLink>
                         </Button>
                       </div>
@@ -183,7 +190,7 @@ const NavBar = () => {
                       <Button
                         onClick={logoutHandler}
                         variant="link"
-                        className="text-[#40A8F5]"
+                        className="text-[#40A8F5] text-lg"
                       >
                         Logout
                       </Button>
@@ -198,8 +205,8 @@ const NavBar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden">
-          <ul className="flex flex-col items-center shadow-md gap-4 py-4">
+        <div className="lg:hidden bg-purple-900">
+          <ul className="flex flex-col items-center shadow-lg gap-4 py-1">
             <li>
               <NavLink
                 to="/"
@@ -249,30 +256,34 @@ const NavBar = () => {
                     <AvatarImage
                       src="https://github.com/shadcn.png"
                       alt="User Avatar"
+                      className="w-10 h-10 rounded-full"
                     />
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="w-80">
+                <PopoverContent className="w-80 bg-purple-800 rounded-lg p-4">
                   <div className="flex gap-4 items-center">
                     <Avatar>
                       <AvatarImage
                         src="https://github.com/shadcn.png"
                         alt="User Avatar"
+                        className="w-10 h-10 rounded-full"
                       />
                     </Avatar>
                     <div>
-                      <h4 className="font-medium text-white">
+                      <h4 className="font-bold text-white text-xl">
                         Suyan Man Amatya
+                        {user?.fullName}
                       </h4>
-                      <p className="text-sm text-gray-300">
+                      <p className="text-base text-gray-300">
                         Lorem ipsum dolor sit amet.
+                        {user?.profile?.bio}
                       </p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-3 text-gray-300 items-start my-3">
                     <div className="flex items-center">
                       <User2 className="text-white" />
-                      <Button variant="link" className="text-[#40A8F5]">
+                      <Button variant="link" className="text-[#40A8F5] text-lg">
                         <NavLink to={"/profile"}>View Profile</NavLink>
                       </Button>
                     </div>
@@ -281,7 +292,7 @@ const NavBar = () => {
                       <Button
                         onClick={logoutHandler}
                         variant="link"
-                        className="text-[#40A8F5]"
+                        className="text-[#40A8F5] text-lg"
                       >
                         Logout
                       </Button>

@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import info from "../../assets/pictures/info.svg";
+import logo from "../../assets/logo/white.png";
 
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-300 py-10">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo or Info */}
           <div className="space-y-4 text-center lg:text-left">
             <img src={info} alt="Info" className="mx-auto lg:mx-0" />
@@ -128,6 +129,9 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
+          </div>
+          <div>
+            <img src={logo} alt="" />
           </div>
         </div>
 
