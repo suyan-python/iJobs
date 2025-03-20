@@ -19,6 +19,10 @@ import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AboutUs from "./components/aboutus/AboutUs";
 import Contact from "./components/contact/Contact";
 import ScrollToTop from "./components/ScrollToTop";
+import TermsAndServices from "./components/terms/Terms";
+import PrivacyPolicy from "./components/policy/Policy";
+import SupportSection from "./components/support/Support";
+import FAQ from "./components/faq/FAQ";
 
 function App() {
   return (
@@ -37,6 +41,10 @@ function App() {
           <Route path="/browse" element={<Browser />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/behind" element={<BehindTheBusiness />} />
+          <Route path="/terms" element={<TermsAndServices />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/support" element={<SupportSection />} />
+          <Route path="/faq" element={<FAQ />} />
 
           {/* route for admin  */}
           <Route
