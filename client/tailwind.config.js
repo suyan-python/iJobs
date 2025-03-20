@@ -9,6 +9,9 @@ export default {
       },
       backgroundImage: {
         suyan: "url('/src/assets/team/suyan2.png')",
+        bayapak: "url('/src/assets/team/bayapak.png')",
+        bimal: "url('/src/assets/team/bimal.png')",
+        rupesh: "url('/src/assets/team/rupesh.png')",
       },
     },
   },
